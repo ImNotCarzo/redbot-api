@@ -24,16 +24,18 @@ export default async function handler(req, res) {
     const user = await userRes.json();
 
     await fetch(`https://discord.com/api/v10/users/@me/applications/${process.env.CLIENT_ID}/role-connection`, {
-      method: "PUT",
-      headers: {
-        Authorization:  `Bearer ${tokenData.access_token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        platform_name: "RedBot",
-        metadata: {},
-      }),
-    });
+  method: "PUT",
+  headers: {
+    Authorization:  `Bearer ${tokenData.access_token}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    platform_name: "RedBot",
+    metadata: {
+      servidores: 1,
+    },
+  }),
+});
 
     res.redirect("https://redbot.me?vinculado=1");
   } catch (err) {
