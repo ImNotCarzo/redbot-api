@@ -5,10 +5,17 @@ export default async function handler(req, res) {
       {
         method: "PUT",
         headers: {
-          Authorization:  `Bearer ${process.env.BOT_TOKEN}`,
+          Authorization: `Bot ${process.env.BOT_TOKEN}`, // FIX
           "Content-Type": "application/json",
         },
-        body: JSON.stringify([]),  
+        body: JSON.stringify([
+          {
+            key: "servidores",
+            name: "Servidores",
+            description: "Cantidad de servidores en RedBot",
+            type: 2,
+          }
+        ]),
       }
     );
 
